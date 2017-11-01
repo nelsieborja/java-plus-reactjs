@@ -4,11 +4,13 @@ With Webpack, Redux, React Router and more...
 ## Creating a Java Web App Using Embedded Tomcat
 Please follow the steps from [heroku](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat).
 Or follow below steps in case site is no longer available
-* Prerequisites
-** Basic Java knowledge, including an installed version of the JVM and Maven.
-** Basic Git knowledge, including an installed version of Git.
 
-* Create your pom.xml
+### Prerequisites
+* Basic Java knowledge, including an installed version of the JVM and Maven.
+* Basic Git knowledge, including an installed version of Git.
+
+### Create your pom.xml
+
 Create a folder to hold your app and create a file called pom.xml in the root of that folder with the following contents:
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -85,10 +87,13 @@ Create a folder to hold your app and create a file called pom.xml in the root of
 </project>
 ```
 This pom.xml defines the dependencies that you’ll need to run Tomcat in an embedded mode.
+
 The last 3 entries are only required for applications that use JSP files. If you use this technique for an application that doesn’t use JSPs then you can just include the first 3 dependencies.
+
 There is also a single plugin defined. The appassembler plugin generates a launch script that automatically sets up your classpath and calls your main method (created below) to launch your application.
 
-* Add a launcher class
+### Add a launcher class
+
 Create a file called `Main.java` in your `src/main/java/launch` directory and put the following in it:
 ```
 package launch;
@@ -135,7 +140,8 @@ public class Main {
 ```
 This does just what is enough to launch the server. The sample application contains a more complete version of code that handles temp directories and other things.
 
-* Add a Servlet
+### Add a Servlet
+
 Create a file called `HelloServlet.java` in the `src/main/java/servlet` directory and put the following into it:
 ```
 package servlet;
@@ -168,7 +174,8 @@ public class HelloServlet extends HttpServlet {
 ```
 This is simple Servlet that uses annotations to configure itself.
 
-* Add a JSP
+### Add a JSP
+
 Create a file called `index.jsp` in the `src/main/webapp` directory:
 ```
 <html>
@@ -178,7 +185,8 @@ Create a file called `index.jsp` in the `src/main/webapp` directory:
 </html>
 ```
 
-* Run your application
+### Run your application
+
 To generate the start scripts simply run:
 ```
 $ mvn package
@@ -198,7 +206,8 @@ That’s it. Your application should start up on port 8080. You can see the JSP 
 
 
 ## Deploy your application to Heroku
-* Create a Procfile
+### Create a Procfile
+
 You declare how you want your application executed in `Procfile` in the project root. Create this file with a single line:
 ```
 web: sh target/bin/webapp
@@ -206,7 +215,8 @@ web: sh target/bin/webapp
 
 Learn more about [procfile](https://devcenter.heroku.com/articles/procfile).
 
-* Deploy to Heroku
+### Deploy to Heroku
+
 You can either deploy to Heroku by using the [Heroku Maven plugin](https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin) or you can deploy using Git. The latter is described in this article.
 
 
