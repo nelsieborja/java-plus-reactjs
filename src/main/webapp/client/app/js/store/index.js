@@ -6,16 +6,14 @@ import rootReducer from "../reducers";
 
 export const history = createHistory();
 
-const initialState = {};
+const initialState = __INITIAL_STATE__ || {};
 const enhancers = [];
 const middleware = [thunk, routerMiddleware(history)];
 
 // if (process.env.NODE_ENV === "development") {
-//   const devToolsExtension = window.devToolsExtension;
-
-//   if (typeof devToolsExtension === "function") {
-//     enhancers.push(devToolsExtension());
-//   }
+if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
+  enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__());
+}
 // }
 
 const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);

@@ -1,12 +1,6 @@
 import * as types from "../actions";
 
-const initialState = {
-  count: 0,
-  isIncrementing: false,
-  isDecrementing: false
-};
-
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case types.INCREMENT_REQUESTED:
       return {

@@ -1,19 +1,14 @@
 import React from "react";
 import { render } from "react-dom";
-import { Provider } from "react-redux";
-import { ConnectedRouter } from "react-router-redux";
-import store, { history } from "./store";
-import App from "./containers/App";
+import Root from "./containers/Root";
 
-const target = document.querySelector("#root");
+const rootEl = document.querySelector("#root");
 
-render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <App />
-      </div>
-    </ConnectedRouter>
-  </Provider>,
-  target
-);
+render(<Root />, rootEl);
+
+if (module.hot) {
+  module.hot.accept("./containers/Root", () => {
+    const NextRoot = require("./containers/Root").default;
+    render(<NextRoot />, rootEl);
+  });
+}

@@ -14,7 +14,7 @@ import "./style.scss";
 
 const Home = props => (
   <div>
-    <h1>Home</h1>
+    <h1>OMG HMR works!!!</h1>
     <p className="counter">Count: {props.count}</p>
 
     <p>
