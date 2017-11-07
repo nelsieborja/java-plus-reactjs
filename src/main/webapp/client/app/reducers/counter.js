@@ -11,7 +11,7 @@ export default (state = {}, action) => {
     case types.INCREMENT:
       return {
         ...state,
-        count: state.count + 1,
+        count: state.count + 5,
         isIncrementing: !state.isIncrementing
       };
 
@@ -24,7 +24,7 @@ export default (state = {}, action) => {
     case types.DECREMENT:
       return {
         ...state,
-        count: state.count - 1,
+        count: state.count - 5,
         isDecrementing: !state.isDecrementing
       };
 

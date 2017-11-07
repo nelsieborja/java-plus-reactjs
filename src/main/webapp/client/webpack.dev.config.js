@@ -3,7 +3,8 @@ const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const BUILD_DIR = path.resolve(__dirname, "../public");
-const APP_DIR = path.resolve(__dirname, "./app/js");
+const APP_DIR = path.resolve(__dirname, "./app");
+const SCSS_RESOURCES = path.resolve(__dirname, "./app/scss/resources/*.scss");
 
 module.exports = {
   entry: [
@@ -56,6 +57,9 @@ module.exports = {
     }
   },
 
+  // For error referencing to correct file and the code line number
+  devtool: "inline-source-map",
+
   plugins: [
     // Removes build folder(s) before building
     new CleanWebpackPlugin(["public"]),
@@ -74,6 +78,7 @@ module.exports = {
         include: APP_DIR,
         loader: "babel-loader",
         query: {
+          // stage-2: to get rid of method binding from component class
           presets: ["es2015", "react", "stage-2"]
         }
       },
@@ -83,8 +88,7 @@ module.exports = {
         use: [
           // Insert styles into the DOM
           "style-loader",
-          // For auto prefixing
-          // "postcss-loader",
+
           // Resolves all imports and url()
           {
             loader: "css-loader",
@@ -92,11 +96,19 @@ module.exports = {
               sourceMap: true
             }
           },
+
+          // For auto prefixing
+          "postcss-loader",
+
           // Compiles sass to css
+          "sass-loader",
+
+          // @import SCSS resources into every required SCSS module
           {
-            loader: "sass-loader",
+            loader: "sass-resources-loader",
             options: {
-              sourceMap: true
+              // Paths to the files with resources
+              resources: SCSS_RESOURCES
             }
           }
         ]

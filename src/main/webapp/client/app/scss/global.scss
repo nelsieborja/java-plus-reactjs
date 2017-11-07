@@ -1,0 +1,62 @@
+.g {
+  //>>>>>>>>>>>>>>>>>>>>>>>>
+  // START: FLEX
+  &-flex {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-item-stretch {
+      flex: 1;
+    }
+  }
+  // END: FLEX
+  //<<<<<<<<<<<<<<<<<<<<<<<<
+
+  //>>>>>>>>>>>>>>>>>>>>>>>>
+  // START: FONTS
+  &-font-blue {
+    color: $main-blue-color;
+  }
+
+  &-font-green {
+    color: $main-green-color;
+  }
+
+  &-font-yellow {
+    color: $main-yellow-color;
+  }
+
+  &-font-red {
+    color: $main-red-color;
+  }
+  // END: FONTS
+  //<<<<<<<<<<<<<<<<<<<<<<<<
+
+  //>>>>>>>>>>>>>>>>>>>>>>>>
+  // START: POSITIONS
+  &-pos-abs {
+    position: absolute;
+  }
+
+  &-pos-rel {
+    position: relative;
+  }
+  // END: POSITIONS
+  //<<<<<<<<<<<<<<<<<<<<<<<<
+
+  //>>>>>>>>>>>>>>>>>>>>>>>>
+  // START: TITLES
+  &-title {
+    font-size: 30px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  // END: TITLES
+  //<<<<<<<<<<<<<<<<<<<<<<<<
+}

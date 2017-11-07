@@ -1,0 +1,8 @@
+.about {
+  &__hello {
+    background: $border-color;
+    color: $main-grey-color;
+    font-size: 18px;
+    padding: 30px;
+  }
+}

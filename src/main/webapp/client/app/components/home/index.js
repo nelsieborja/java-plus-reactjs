@@ -2,6 +2,7 @@ import React from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+
 import {
   increment,
   incrementAsync,
@@ -10,34 +11,19 @@ import {
 } from "../../actions/counter";
 import { hello } from "../../api/hello";
 
+import Title from "./Title";
+import Counter from "./Counter";
+import Notes from "./Notes";
+import Footer from "./Footer";
+
 import "./style.scss";
 
 const Home = props => (
-  <div>
-    <h1>OMG HMR works!!!</h1>
-    <p className="counter">Count: {props.count}</p>
-
-    <p>
-      <button onClick={props.increment} disabled={props.isIncrementing}>
-        Increment
-      </button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>
-        Increment Async
-      </button>
-    </p>
-
-    <p>
-      <button onClick={props.decrement} disabled={props.isDecrementing}>
-        Decrementing
-      </button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>
-        Decrement Async
-      </button>
-    </p>
-
-    <hr />
-    <button onClick={props.changePage}>Go to about page via redux</button>
-    <button onClick={props.hello}>Try fetch</button>
+  <div className="home g-flex-column g-flex-item-stretch">
+    <Title />
+    <Counter {...props} />
+    <Notes />
+    <Footer {...props} />
   </div>
 );
 
@@ -51,7 +37,7 @@ const mapDispatchToProps = dispatch =>
       decrement,
       decrementAsync,
       hello,
-      changePage: () => push("/about-us")
+      changePage: () => push("/about")
     },
     dispatch
   );

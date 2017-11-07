@@ -1,0 +1,27 @@
+body {
+  color: $main-black-color;
+  font: $main-font-size Verdana;
+  padding: 20px;
+
+  * {
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font: inherit;
+  }
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}
+
+@import "./global.scss";
+
+#root {
+  @extend .g-flex-column;
+  min-height: 100%;
+}

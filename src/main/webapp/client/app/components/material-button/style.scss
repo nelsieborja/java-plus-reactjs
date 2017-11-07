@@ -1,0 +1,32 @@
+.material-button {
+  color: $main-grey-color;
+  background: 0;
+  border: 1px solid $border-color {
+    radius: 2px;
+  }
+  font-size: $main-font-size;
+  margin: 5px;
+  min-width: 160px;
+  padding: 12px 15px;
+
+  &--red {
+    background: $main-red-color;
+    border-color: $main-red-color;
+    color: $main-white-color;
+  }
+
+  &--green {
+    background: $main-green-color;
+    border-color: $main-green-color;
+    color: $main-white-color;
+  }
+
+  &--oval {
+    border-radius: 20px;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    // pointer-events: none;
+  }
+}
