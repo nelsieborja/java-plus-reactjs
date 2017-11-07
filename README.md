@@ -1,5 +1,5 @@
 # Java Backend + ReactJS Frontend
-With Webpack, Redux, React Router and more...
+With Webpack, HMR, Redux, React Router and more...
 
 ## Creating a Java Web App Using Embedded Tomcat
 Please follow the steps from [heroku](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat).
@@ -281,8 +281,10 @@ If you have experience using `ReactJS`, `Redux`, `React Router` and `Webpack` th
 
 ## References
 [For Java Web installation](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat)
+
 [For react/redux/react-router-dom integration](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
+
 [For Webpack integration](https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96)
 
 ## Dev Tools
-[__REDUX_DEVTOOLS_EXTENSION_COMPOSE__](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+[Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
