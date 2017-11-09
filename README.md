@@ -274,12 +274,12 @@ If you want to skip the creation steps you can clone the finished sample:
 $ git clone git@github.com:heroku/devcenter-embedded-tomcat.git
 ```
 
-
+---
 
 ## Adding Client files
 If you have experience using `ReactJS`, `Redux`, `React Router` and `Webpack` then by going through the folder/files will give you the idea on how to accomplish this
 
-
+---
 
 ## Adding a Linter: [ESLint](https://eslint.org/)
 ### Local installation
@@ -319,7 +319,7 @@ env: {
 }
 ```
 
-
+---
 
 ## References
 [For Java Web installation](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat)
@@ -330,7 +330,7 @@ env: {
 
 [For configuring `eslint-loader` with Webpack](https://www.learnhowtoprogram.com/react/react-fundamentals/building-an-environment-automatic-linting-with-webpack)
 
-
+---
 
 ## Dev Tools
 [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
