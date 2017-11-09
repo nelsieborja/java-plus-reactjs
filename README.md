@@ -275,8 +275,50 @@ $ git clone git@github.com:heroku/devcenter-embedded-tomcat.git
 ```
 
 
+
 ## Adding Client files
 If you have experience using `ReactJS`, `Redux`, `React Router` and `Webpack` then by going through the folder/files will give you the idea on how to accomplish this
+
+
+
+## Adding a Linter: [ESLint](https://eslint.org/)
+### Local installation
+```
+$ npm i eslint --save-dev
+```
+
+### Configuration file setup
+```
+$ ./node_modules/.bin/eslint --init
+```
+
+### ESLint prerequisites
+* [babel-eslint](https://github.com/babel/babel-eslint) - Lint all valid Babel code
+* [eslint-loader](https://github.com/MoOx/eslint-loader) - Linting JS files using eslint with webpack
+* [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) - React specific linting rules for ESLint
+
+### Additional rules to get rid of React warnings
+```
+rules: {
+    ...
+    "react/jsx-uses-react": [2],
+    "react/jsx-uses-vars": [2],
+    ...
+}
+```
+
+### Additional environment to get rid of other warnings
+```
+env: {
+    ...
+    // Webpack module.hot
+    "commonjs": true,
+    // require()
+    "amd": true
+    ...
+}
+```
+
 
 
 ## References
@@ -285,6 +327,10 @@ If you have experience using `ReactJS`, `Redux`, `React Router` and `Webpack` th
 [For react/redux/react-router-dom integration](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
 
 [For Webpack integration](https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96)
+
+[For configuring `eslint-loader` with Webpack](https://www.learnhowtoprogram.com/react/react-fundamentals/building-an-environment-automatic-linting-with-webpack)
+
+
 
 ## Dev Tools
 [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)

@@ -1,0 +1,33 @@
+{
+  "env": {
+    // Defines require() and define() as global variables as per the amd spec
+    "amd": true,
+    // window,document
+    "browser": true,
+    // Webpack module.hot
+    "commonjs": true,
+    "es6": true,
+    // Node process.env
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  // Lint all valid Babel code
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    // Get rid of React warnings
+    "react/jsx-uses-react": [2],
+    "react/jsx-uses-vars": [2],
+    "semi": ["error", "always"]
+  }
+}

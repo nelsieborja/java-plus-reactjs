@@ -6,15 +6,17 @@ import rootReducer from "../reducers";
 
 export const history = createHistory();
 
+// To get rid of eslint warning
+/*global __INITIAL_STATE__*/
 const initialState = __INITIAL_STATE__ || {};
 const enhancers = [];
 const middleware = [thunk, routerMiddleware(history)];
 
-// if (process.env.NODE_ENV === "development") {
-if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
-  enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__());
+if (process.env.APP_ENV === "development") {
+  if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
+    enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__());
+  }
 }
-// }
 
 const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
 

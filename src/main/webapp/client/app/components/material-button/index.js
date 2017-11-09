@@ -1,6 +1,7 @@
 import React from "react";
 
 import MaterialRipple from "../material-ripple";
+
 import "./style.scss";
 
 const MaterialButton = props => (

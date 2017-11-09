@@ -9,4 +9,3 @@ export default () => (
     <Route exact path="/about" component={About} />
   </Switch>
 );
-// render={() => System.import("./home").then(module => module.default)}

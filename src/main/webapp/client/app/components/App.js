@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
 
 import Aux from "./Aux";
 import Header from "./header";

@@ -2,7 +2,6 @@ const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const BUILD_DIR = path.resolve(__dirname, "../public");
 const APP_DIR = path.resolve(__dirname, "./app");
 const SCSS_RESOURCES = path.resolve(__dirname, "./app/scss/resources/*.scss");
 
@@ -31,10 +30,7 @@ module.exports = {
     // Will output bundle.js
     filename: "bundle.js",
 
-    // Path of output files
-    path: BUILD_DIR,
-
-    // Required for webpack-dev-server
+    // Required by webpack-dev-server for outputting bundle
     publicPath: "/public/"
   },
 
@@ -68,11 +64,28 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
 
     // Enable HMR globally; Generate hot update chunks
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+
+    new webpack.DefinePlugin({
+      "process.env.APP_ENV": JSON.stringify("development")
+    })
   ],
 
   module: {
-    loaders: [
+    rules: [
+      // Tell Webpack to detect errors/warnings but should still be able to build (but with warnings)
+      {
+        enforce: "pre", // specify as pre-loader; lint files not modified by other loaders (like babel-loader)
+        test: /\.js$/,
+        include: APP_DIR,
+        loader: "eslint-loader",
+        options: {
+          emitWarning: true, // instruct eslint-loader to output errors/warning in the console
+          configFile: "./.eslintrc.json" // points loader to ESLint config file
+        }
+      },
+
+      // Transpiling JS files using babel and webpack
       {
         test: /\.js$/,
         include: APP_DIR,
@@ -82,6 +95,7 @@ module.exports = {
           presets: ["es2015", "react", "stage-2"]
         }
       },
+
       {
         test: /\.scss$/,
         include: APP_DIR,
@@ -98,7 +112,16 @@ module.exports = {
           },
 
           // For auto prefixing
-          "postcss-loader",
+          // After installing ESLint, needed to add config here,
+          // thus config file (.postcssrc) is no longer in used
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: () => [
+                /* PostCSS Plugins */
+              ]
+            }
+          },
 
           // Compiles sass to css
           "sass-loader",
