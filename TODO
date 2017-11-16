@@ -1,0 +1,10 @@
+1. Implement server-side rendering
+  * http://winterbe.com/posts/2015/02/16/isomorphic-react-webapps-on-the-jvm/
+  * https://patrickgrimard.io/2016/11/24/server-side-rendering-with-spring-boot-and-react/
+  * https://github.com/KnisterPeter/jreact
+  * https://medium.com/@jimmy_shen/use-nashorn-engine-to-do-server-side-rendering-with-react-eba835e33d77
+  
+  * https://www.youtube.com/watch?v=CUepTUXfS4g
+  * http://yanns.github.io/blog/2014/03/15/server-side-rendering-for-javascript-reactjs-framework/
+  
+  * https://github.com/zeit/next.js/
