@@ -8,3 +8,13 @@
   * http://yanns.github.io/blog/2014/03/15/server-side-rendering-for-javascript-reactjs-framework/
   
   * https://github.com/zeit/next.js/
+  
+  
+  
+ 2. Offline Support
+   * https://github.com/NekR/offline-plugin
+   * External/api support:
+     https://github.com/NekR/offline-plugin/issues/64
+     https://github.com/NekR/offline-plugin/issues/26
+     https://github.com/NekR/offline-plugin/issues/117 (Sample implementation)
+   * https://github.com/goldhand/sw-precache-webpack-plugin (pre-cache)
