@@ -48,3 +48,10 @@ const mapDispatchToProps = dispatch =>
 // })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+/* To push to history:
+import { push } from "react-router-redux";
+push("/about")
+-- OR --
+this.props.histtory.push("/about")
+*/

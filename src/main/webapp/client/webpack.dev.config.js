@@ -1,36 +1,62 @@
 const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const fs = require("fs");
 
 const APP_DIR = path.resolve(__dirname, "./app");
+const LABELS_DIR = path.resolve(__dirname, "./app/labels");
 const SCSS_RESOURCES = path.resolve(__dirname, "./app/scss/resources/*.scss");
 
+let labelChunkNames = [];
+function getEntries() {
+  const entries = fs
+    .readdirSync(LABELS_DIR)
+    .filter(file => file.match(/^(?!(index)).*$/))
+    .reduce((labels, file) => {
+      labels[file.substring(0, file.length - 3)] = LABELS_DIR + "/" + file;
+      return labels;
+    }, {});
+
+  // Get label names
+  labelChunkNames = Object.keys(entries);
+
+  // Add main file
+  entries.app = APP_DIR + "/index";
+
+  return entries;
+}
+
 module.exports = {
-  entry: [
-    // Activate HMR for React - I guess same as module.hot.accept?
-    // Will dig into deep for this later
-    // "react-hot-loader/patch",
+  // entry: {
+  //   // Activate HMR for React - I guess same as module.hot.accept?
+  //   // Will dig into deep for this later
+  //   // "react-hot-loader/patch",
 
-    // Bundle the client for webpack-dev-server
-    // and connect to the provided endpoint;
-    // Enables websocket connection (needs url and endpoint)
-    // "webpack-dev-server/client?http://localhost:3000",
+  //   // Bundle the client for webpack-dev-server
+  //   // and connect to the provided endpoint;
+  //   // Enables websocket connection (needs url and endpoint)
+  //   // "webpack-dev-server/client?http://localhost:3000",
 
-    // Bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
-    // "webpack/hot/only-dev-server",
-    // it reloads the entire browser if there's any issue
-    // "webpack/hot/dev-server",
+  //   // Bundle the client for hot reloading
+  //   // only- means to only hot reload for successful updates
+  //   // "webpack/hot/only-dev-server",
+  //   // it reloads the entire browser if there's any issue
+  //   // "webpack/hot/dev-server",
 
-    // The entry point of our app
-    APP_DIR + "/index"
-  ],
+  //   // The entry point of our app
+  //   app: APP_DIR + "index"
+  // },
+
+  entry: getEntries(),
 
   output: {
-    // Will output bundle.js
-    filename: "bundle.js",
+    // Filename for main entry file
+    filename: "[name].min.js",
 
-    // Required by webpack-dev-server for outputting bundle
+    // General chunk pattern
+    chunkFilename: "[name].js",
+
+    // Required by Webpack for outputting bundle/chunks
     publicPath: "/public/"
   },
 
@@ -58,7 +84,11 @@ module.exports = {
 
   plugins: [
     // Removes build folder(s) before building
-    new CleanWebpackPlugin(["public"]),
+    new CleanWebpackPlugin(["public"], {
+      // Need to explicitly specify root if output folder is outside root
+      root: path.resolve(__dirname, ".."),
+      verbose: true
+    }),
 
     // Prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin(),
@@ -67,7 +97,25 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.DefinePlugin({
-      "process.env.APP_ENV": JSON.stringify("development")
+      "process.env": {
+        APP_ENV: JSON.stringify("development")
+      }
+    }),
+
+    // Label chunks
+    new webpack.optimize.CommonsChunkPlugin({
+      // children: true,
+      name: labelChunkNames
+      // minChunks: Infinity
+    }),
+
+    // Vendor chunks
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks({ context }) {
+        // var context = module.context;
+        return context && context.indexOf("node_modules") >= 0;
+      }
     })
   ],
 

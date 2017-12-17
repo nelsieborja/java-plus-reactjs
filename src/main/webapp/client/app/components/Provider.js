@@ -7,7 +7,7 @@ import App from "./App";
 export default () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <App history={history} />
     </ConnectedRouter>
   </Provider>
 );

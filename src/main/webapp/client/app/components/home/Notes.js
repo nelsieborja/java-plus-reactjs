@@ -1,5 +1,6 @@
 import React from "react";
 import Aux from "../Aux";
+import { welcome } from "../../labels";
 
 export default () => (
   <Aux>
@@ -10,5 +11,6 @@ export default () => (
     <p className="home__note">
       Also now supports custom HTML attributes eg: ❤️ 🦄
     </p>
+    {welcome}
   </Aux>
 );

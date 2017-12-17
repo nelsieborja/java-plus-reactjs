@@ -1,0 +1,14 @@
+# Misc
+.DS_Store
+.vscode/
+
+# Java
+.classpath
+.project
+.settings/
+bin/
+target/
+tomcat.8080/
+
+# Client
+node_modules

@@ -8,6 +8,12 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
+// import java.io.FileReader;
+
+// import javax.script.ScriptEngine;
+// import javax.script.ScriptEngineManager;
+// import javax.script.ScriptException;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -37,5 +43,12 @@ public class Main {
 
         tomcat.start();
         tomcat.getServer().await();
+
+            
+        // Server-rendering with Nashorn
+        // ScriptEngine nashorn = new ScriptEngineManager().getEngineByName("nashorn");
+        // nashorn.eval(new FileReader(webappDirLocation + "public/bundle.js"));
+        // String markup = nashorn.invokeFunction("renderOnServer");
+        // Then Pass markup as Java variable
     }
 }

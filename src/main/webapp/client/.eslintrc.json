@@ -25,6 +25,8 @@
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
+    // Append "G_" to all global variables
+    // "no-unused-vars": ["error", { "varsIgnorePattern": "G_" }],
     // Get rid of React warnings
     "react/jsx-uses-react": [2],
     "react/jsx-uses-vars": [2],

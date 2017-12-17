@@ -85,5 +85,32 @@ export function getUniqueId() {
     "uid-" + new Date().getTime() + parseInt(Math.random() * 100).toString()
   );
 }
+export function contains(search, target) {
+  return !!~search.indexOf(target);
+}
 // END: String creation/manipulation
+//<<<<<<<<<<<<<<<<<<<<<<<<
+
+//>>>>>>>>>>>>>>>>>>>>>>>>
+// START: Handlers
+export function customAddEventListener(
+  elem,
+  event,
+  callback,
+  useCapture = false
+) {
+  if (elem.addEventListener) {
+    elem.addEventListener(event, callback, useCapture);
+  } else {
+    elem.attachEvent(`on${event}`, callback);
+  }
+}
+export function customRemoveEventListener(elem, event, callback) {
+  if (elem.removeEventListener) {
+    elem.removeEventListener(event, callback);
+  } else {
+    elem.detachEvent(`on${event}`, callback);
+  }
+}
+// END: Handlers
 //<<<<<<<<<<<<<<<<<<<<<<<<

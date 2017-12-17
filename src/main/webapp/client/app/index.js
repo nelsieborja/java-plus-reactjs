@@ -6,6 +6,14 @@ const rootEl = document.querySelector("#root");
 
 render(<Provider />, rootEl);
 
+// window.renderOnClient = function () {
+//   render(<Provider />, rootEl);
+// };
+
+// window.renderOnServer = function () {
+//   return React.renderToString(<Provider />);
+// };
+
 if (module.hot) {
   module.hot.accept("./components/Provider", () => {
     const NextProvider = require("./components/Provider").default;
