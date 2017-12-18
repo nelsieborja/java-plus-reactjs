@@ -1,12 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const fs = require("fs");
 
 const APP_DIR = path.resolve(__dirname, "./app");
 const LABELS_DIR = path.resolve(__dirname, "./app/labels");
-const SCSS_RESOURCES = path.resolve(__dirname, "./app/scss/resources/*.scss");
 
 let labelChunkNames = [];
 function getEntries() {
@@ -52,12 +50,6 @@ module.exports = {
       verbose: true
     }),
 
-    new webpack.DefinePlugin({
-      "process.env": {
-        APP_ENV: JSON.stringify("production")
-      }
-    }),
-
     // Label chunks
     new webpack.optimize.CommonsChunkPlugin({
       // children: true,
@@ -65,31 +57,14 @@ module.exports = {
       // minChunks: Infinity
     }),
 
-    // Vendor chunks/common dependencies into separate file
+    // Vendor chunks
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       minChunks({ context }) {
         // var context = module.context;
         return context && context.indexOf("node_modules") >= 0;
       }
-    }),
-
-    // Minify JS
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      },
-      compressor: {
-        warnings: false,
-        unused: true,
-        dead_code: true
-      }
-    }),
-
-    new webpack.optimize.AggressiveMergingPlugin(),
-
-    // Extract SCSS/CSS from bundle into a file; Including minification
-    new ExtractTextPlugin("style.css")
+    })
   ],
 
   module: {
@@ -103,31 +78,6 @@ module.exports = {
           // stage-2: to get rid of method binding from component class
           presets: ["es2015", "react", "stage-2"]
         }
-      },
-
-      {
-        test: /\.scss$/,
-        include: APP_DIR,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true
-              }
-            },
-            "postcss-loader",
-            "sass-loader",
-            {
-              loader: "sass-resources-loader",
-              options: {
-                // Paths to the files with resources
-                resources: SCSS_RESOURCES
-              }
-            }
-          ]
-        })
       }
     ]
   }
