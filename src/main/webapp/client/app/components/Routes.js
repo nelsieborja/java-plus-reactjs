@@ -1,20 +1,27 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { chunkLoadFailed } from "../helpers/moduleLoader";
-// import Home from "./home";
-// import About from "./about";
-import asyncComponent from "./AsyncComponent";
 
-const Home = asyncComponent(() =>
-  import(/* webpackChunkName: "homepage" */ "./home")
-    .then(module => module.default)
-    .catch(chunkLoadFailed)
-);
-const About = asyncComponent(() =>
-  import(/* webpackChunkName: "aboutpage" */ "./about")
-    .then(module => module.default)
-    .catch(chunkLoadFailed)
-);
+import CustomLoadable from "./misc/CustomLoadable";
+const Brands = CustomLoadable({
+  loader: () => import("./brands")
+});
+const Search = CustomLoadable({
+  loader: () => import("./search")
+});
+const Home = CustomLoadable({
+  loader: () => import("./home"),
+  render({ default: Component }, props) {
+    Search.preload();
+    return <Component {...props} />;
+  }
+});
+const About = CustomLoadable({
+  loader: () => import("./about"),
+  render({ default: Component }, props) {
+    Brands.preload();
+    return <Component {...props} />;
+  }
+});
 
 export default () => (
   <Switch>

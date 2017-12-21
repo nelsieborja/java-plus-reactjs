@@ -6,9 +6,9 @@ import "./style.scss";
 export default () => (
   <header className="header g-flex">
     <img
-      alt="Google"
-      src="https://www.google.ae/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"
-      width={120}
+      alt="Carrefour"
+      src="https://www.carrefouruae.com/_ui/responsive/theme-blue/images/logo.svg"
+      width={150}
     />
     <Nav />
   </header>

@@ -1,9 +1,11 @@
+// Plugins
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+// Directories
 const APP_DIR = path.resolve(__dirname, "./app");
 const SCSS_RESOURCES = path.resolve(__dirname, "./app/scss/resources/*.scss");
 

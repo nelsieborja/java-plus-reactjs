@@ -2,8 +2,12 @@ import React from "react";
 import { render } from "react-dom";
 import Provider from "./components/Provider";
 
-const rootEl = document.querySelector("#root");
+if (process.env.APP_ENV === "development") {
+  const { whyDidYouUpdate } = require("why-did-you-update");
+  whyDidYouUpdate(React);
+}
 
+const rootEl = document.querySelector("#root");
 render(<Provider />, rootEl);
 
 // window.renderOnClient = function () {

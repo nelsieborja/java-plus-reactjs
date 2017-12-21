@@ -1,6 +1,6 @@
 import React from "react";
 import Aux from "../Aux";
-import { welcome } from "../../labels";
+import { Translate } from "react-translated";
 
 export default () => (
   <Aux>
@@ -11,6 +11,6 @@ export default () => (
     <p className="home__note">
       Also now supports custom HTML attributes eg: ❤️ 🦄
     </p>
-    {welcome}
+    <Translate text="English" />
   </Aux>
 );

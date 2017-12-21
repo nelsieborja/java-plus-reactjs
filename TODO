@@ -9,12 +9,20 @@
   
   * https://github.com/zeit/next.js/
   
+  Or go with static site rendering approach:
+  * https://github.com/amsul/react-translated/tree/master/examples/react-dom#pre-rendering-into-static-html-files
+  * https://github.com/geelen/react-snapshot
   
-  
+
  2. Offline Support
-   * https://github.com/NekR/offline-plugin
-   * External/api support:
-     https://github.com/NekR/offline-plugin/issues/64
-     https://github.com/NekR/offline-plugin/issues/26
-     https://github.com/NekR/offline-plugin/issues/117 (Sample implementation)
-   * https://github.com/goldhand/sw-precache-webpack-plugin (pre-cache)
+  * https://github.com/NekR/offline-plugin
+  * External/api support:
+    https://github.com/NekR/offline-plugin/issues/64
+    https://github.com/NekR/offline-plugin/issues/26
+    https://github.com/NekR/offline-plugin/issues/117 (Sample implementation)
+  * https://github.com/goldhand/sw-precache-webpack-plugin (pre-cache)
+
+
+3. Potential Libraries/References
+  * https://github.com/jasonslyvia/react-lazyload
+  * https://github.com/amsul/react-translated/tree/master/examples/react-dom

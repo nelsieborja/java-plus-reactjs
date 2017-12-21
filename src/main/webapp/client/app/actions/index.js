@@ -2,3 +2,8 @@ export const INCREMENT_REQUESTED = "counter/INCREMENT_REQUESTED";
 export const DECREMENT_REQUESTED = "counter/DECREMENT_REQUESTED";
 export const INCREMENT = "counter/INCREMENT";
 export const DECREMENT = "counter/DECREMENT";
+
+export const I18N_UPDATE_REQUESTED = "i18n/UPDATED_REQUESTED";
+
+export const LANGUAGE_CHANGE_REQUESTED = "language/CHANGE_REQUESTED";
+export const LANGUAGE_ADD_REQUESTED = "language/ADD_REQUESTED";

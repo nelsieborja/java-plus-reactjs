@@ -1,17 +1,21 @@
-# Java Backend + ReactJS Frontend
+w# Java Backend + ReactJS Frontend
+
 With Webpack, HMR, Redux, React Router and more...
 
 ## Creating a Java Web App Using Embedded Tomcat
+
 Please follow the steps from [heroku](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat).
 Or follow below steps in case site is no longer available
 
 ### Prerequisites
+
 * Basic Java knowledge, including an installed version of the JVM and Maven.
 * Basic Git knowledge, including an installed version of Git.
 
 ### Create your pom.xml
 
 Create a folder to hold your app and create a file called pom.xml in the root of that folder with the following contents:
+
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -86,6 +90,7 @@ Create a folder to hold your app and create a file called pom.xml in the root of
   </build>
 </project>
 ```
+
 This pom.xml defines the dependencies that you’ll need to run Tomcat in an embedded mode.
 
 The last 3 entries are only required for applications that use JSP files. If you use this technique for an application that doesn’t use JSPs then you can just include the first 3 dependencies.
@@ -95,6 +100,7 @@ There is also a single plugin defined. The appassembler plugin generates a launc
 ### Add a launcher class
 
 Create a file called `Main.java` in your `src/main/java/launch` directory and put the following in it:
+
 ```
 package launch;
 
@@ -138,11 +144,13 @@ public class Main {
     }
 }
 ```
+
 This does just what is enough to launch the server. The sample application contains a more complete version of code that handles temp directories and other things.
 
 ### Add a Servlet
 
 Create a file called `HelloServlet.java` in the `src/main/java/servlet` directory and put the following into it:
+
 ```
 package servlet;
 
@@ -172,11 +180,13 @@ public class HelloServlet extends HttpServlet {
 
 }
 ```
+
 This is simple Servlet that uses annotations to configure itself.
 
 ### Add a JSP
 
 Create a file called `index.jsp` in the `src/main/webapp` directory:
+
 ```
 <html>
     <body>
@@ -188,27 +198,31 @@ Create a file called `index.jsp` in the `src/main/webapp` directory:
 ### Run your application
 
 To generate the start scripts simply run:
+
 ```
 $ mvn package
 ```
 
 And then simply run the script. On Mac and Linux, the command is:
+
 ```
 $ sh target/bin/webapp
 ```
 
 On Windows the command is:
+
 ```
 C:/> target/bin/webapp.bat
 ```
 
 That’s it. Your application should start up on port 8080. You can see the JSP at http://localhost:8080 and the servlet and http://localhost:8080/hello
 
-
 ## Deploy your application to Heroku
+
 ### Create a Procfile
 
 You declare how you want your application executed in `Procfile` in the project root. Create this file with a single line:
+
 ```
 web: sh target/bin/webapp
 ```
@@ -219,8 +233,8 @@ Learn more about [procfile](https://devcenter.heroku.com/articles/procfile).
 
 You can either deploy to Heroku by using the [Heroku Maven plugin](https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin) or you can deploy using Git. The latter is described in this article.
 
-
 Commit your changes to Git:
+
 ```
 $ git init
 $ git add .
@@ -228,6 +242,7 @@ $ git commit -m "Ready to deploy"
 ```
 
 Create the app:
+
 ```
 $ heroku create
 Creating high-lightning-129... done, stack is cedar-14
@@ -236,6 +251,7 @@ Git remote heroku added
 ```
 
 Deploy your code:
+
 ```
 $ git push heroku master
 Counting objects: 227, done.
@@ -262,6 +278,7 @@ Total 227 (delta 99), reused 220 (delta 98)
 ```
 
 Congratulations! Your web app should now be up and running on Heroku. Open it in your browser with:
+
 ```
 $ heroku open
 ```
@@ -269,7 +286,8 @@ $ heroku open
 This will show your your JSP and then you can navigate to /hello to see your servlet.
 
 * Clone the source
-If you want to skip the creation steps you can clone the finished sample:
+  If you want to skip the creation steps you can clone the finished sample:
+
 ```
 $ git clone git@github.com:heroku/devcenter-embedded-tomcat.git
 ```
@@ -277,27 +295,33 @@ $ git clone git@github.com:heroku/devcenter-embedded-tomcat.git
 ---
 
 ## Adding Client files
+
 If you have experience using `ReactJS`, `Redux`, `React Router` and `Webpack` then by going through the folder/files will give you the idea on how to accomplish this
 
 ---
 
 ## Adding a Linter: [ESLint](https://eslint.org/)
+
 ### Local installation
+
 ```
 $ npm i eslint --save-dev
 ```
 
 ### Configuration file setup
+
 ```
 $ ./node_modules/.bin/eslint --init
 ```
 
 ### ESLint prerequisites
+
 * [babel-eslint](https://github.com/babel/babel-eslint) - Lint all valid Babel code
 * [eslint-loader](https://github.com/MoOx/eslint-loader) - Linting JS files using eslint with webpack
 * [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) - React specific linting rules for ESLint
 
 ### Additional rules to get rid of React warnings
+
 ```
 rules: {
     ...
@@ -308,6 +332,7 @@ rules: {
 ```
 
 ### Additional environment to get rid of other warnings
+
 ```
 env: {
     ...
@@ -322,6 +347,7 @@ env: {
 ---
 
 ## References
+
 [For Java Web installation](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat)
 
 [For react/redux/react-router-dom integration](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
@@ -330,7 +356,11 @@ env: {
 
 [For configuring `eslint-loader` with Webpack](https://www.learnhowtoprogram.com/react/react-fundamentals/building-an-environment-automatic-linting-with-webpack)
 
+[For Code Splitting](https://github.com/thejameskyle/react-loadable) or [without using a library](https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html)
+
 ---
 
 ## Dev Tools
+
 [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+[Logs unnecessary updates](https://github.com/maicki/why-did-you-update)

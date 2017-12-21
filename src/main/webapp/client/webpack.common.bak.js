@@ -1,9 +1,29 @@
-// Plugins
 const path = require("path");
+const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const fs = require("fs");
 
-// Directories
 const APP_DIR = path.resolve(__dirname, "./app");
+const LABELS_DIR = path.resolve(__dirname, "./app/labels");
+
+let labelChunkNames = [];
+function getEntries() {
+  const entries = fs
+    .readdirSync(LABELS_DIR)
+    .filter(file => file.match(/^(?!(index)).*$/))
+    .reduce((labels, file) => {
+      labels[file.substring(0, file.length - 3)] = LABELS_DIR + "/" + file;
+      return labels;
+    }, {});
+
+  // Get label names
+  labelChunkNames = Object.keys(entries);
+
+  // Add main file
+  entries.app = APP_DIR + "/index";
+
+  return entries;
+}
 
 module.exports = {
   entry: {
@@ -32,6 +52,22 @@ module.exports = {
       root: path.resolve(__dirname, ".."),
       verbose: true
     })
+
+    // Label chunks
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   // children: true,
+    //   name: labelChunkNames
+    //   // minChunks: Infinity
+    // })
+
+    // Vendor chunks
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendor",
+    //   minChunks({ context }) {
+    //     // var context = module.context;
+    //     return context && context.indexOf("node_modules") >= 0;
+    //   }
+    // })
   ],
 
   module: {
