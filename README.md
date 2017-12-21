@@ -358,6 +358,8 @@ env: {
 
 [For Code Splitting](https://github.com/thejameskyle/react-loadable) or [without using a library](https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html)
 
+[For offline support using Service Workers](https://developers.google.com/web/tools/workbox/get-started/webpack)
+
 ---
 
 ## Dev Tools

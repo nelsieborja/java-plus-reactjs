@@ -4,10 +4,12 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 // Directories
 const APP_DIR = path.resolve(__dirname, "./app");
 const SCSS_RESOURCES = path.resolve(__dirname, "./app/scss/resources/*.scss");
+const PUBLIC_DIR = path.resolve(__dirname, "../public");
 
 module.exports = merge(common, {
   plugins: [
@@ -35,7 +37,24 @@ module.exports = merge(common, {
     new webpack.optimize.AggressiveMergingPlugin(),
 
     // Extract SCSS/CSS from bundle into a file; Including minification
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin("style.css"),
+
+    new WorkboxPlugin({
+      globDirectory: PUBLIC_DIR,
+      // globPatterns: ["**/*.{html,js}"], // Set specific file pattern to cache
+      swDest: path.join(PUBLIC_DIR, "sw.js"),
+      // Instructs the latest service worker to take control of all clients as soon as it's activated
+      clientsClaim: true,
+      //  Instructs the latest service worker to activate as soon as it enters the waiting phase
+      skipWaiting: true,
+      // Usually for APIs
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp("https://www.carrefouruae.com"),
+          handler: "staleWhileRevalidate"
+        }
+      ]
+    })
   ],
 
   module: {

@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 // Directories
 const APP_DIR = path.resolve(__dirname, "./app");
+const PUBLIC_DIR = path.resolve(__dirname, "../public");
 
 module.exports = {
   entry: {
@@ -22,7 +23,7 @@ module.exports = {
     publicPath: "/public/",
 
     // Output folder
-    path: path.resolve(__dirname, "../public")
+    path: PUBLIC_DIR
   },
 
   plugins: [
