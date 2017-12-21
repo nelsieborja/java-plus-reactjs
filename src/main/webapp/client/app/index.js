@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import Provider from "./components/Provider";
 import serviceWorker from "./sw";
 
-if (process.env.APP_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   const { whyDidYouUpdate } = require("why-did-you-update");
   whyDidYouUpdate(React);
 } else {

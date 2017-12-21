@@ -12,7 +12,7 @@ const initialState = __INITIAL_STATE__ || {};
 const enhancers = [];
 const middleware = [thunk, routerMiddleware(history)];
 
-if (process.env.APP_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
     enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__());
   }

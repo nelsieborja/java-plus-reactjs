@@ -4,8 +4,10 @@
   "description": "Java + ReactJS",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "start":
+      "webpack-dev-server --define process.env.NODE_ENV=\"'development'\" --config webpack.dev.js",
+    "build":
+      "webpack --define process.env.NODE_ENV=\"'production'\" --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nelsie Borja",

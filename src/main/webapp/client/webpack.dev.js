@@ -34,7 +34,7 @@ module.exports = merge(common, {
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        APP_ENV: JSON.stringify("development")
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development")
       }
     }),
 
