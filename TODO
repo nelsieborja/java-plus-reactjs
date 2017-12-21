@@ -12,6 +12,8 @@
   Or go with static site rendering approach:
   * https://github.com/amsul/react-translated/tree/master/examples/react-dom#pre-rendering-into-static-html-files
   * https://github.com/geelen/react-snapshot
+  And probably a combination with this approach
+  * https://hackernoon.com/react-js-efficient-server-rending-5dcb2a0ae14a
   
 
 3. Potential Libraries/References
