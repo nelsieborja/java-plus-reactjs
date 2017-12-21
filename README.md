@@ -1,4 +1,4 @@
-w# Java Backend + ReactJS Frontend
+# Java Backend + ReactJS Frontend
 
 With Webpack, HMR, Redux, React Router and more...
 
@@ -363,4 +363,5 @@ env: {
 ## Dev Tools
 
 [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
-[Logs unnecessary updates](https://github.com/maicki/why-did-you-update)
+
+[Console log unnecessary updates](https://github.com/maicki/why-did-you-update)
