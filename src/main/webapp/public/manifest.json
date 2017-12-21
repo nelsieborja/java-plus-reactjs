@@ -1,0 +1,38 @@
+{
+  "short_name": "Carrefour",
+  "name": "Carrefour",
+  "icons": [
+    {
+      "src": "/public/carrefour.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/public/carrefour.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "/public/carrefour.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/public/carrefour.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0e5aa7",
+  "theme_color": "#0e5aa7",
+  "orientation": "portrait",
+  "display": "standalone",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "carrefourStoreID"
+    }
+  ]
+}

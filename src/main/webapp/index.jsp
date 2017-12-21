@@ -3,6 +3,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="./public/style.css">
+  <!-- iOS App Banner -->
+  <meta name="apple-itunes-app" content="app-id=carrefourStoreID">
+  <!-- Android App Banner -->
+  <link rel="manifest" href="./public/manifest.json">
 </head>
 
 <body>

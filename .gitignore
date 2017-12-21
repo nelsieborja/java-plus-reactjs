@@ -12,4 +12,6 @@ tomcat.8080/
 
 # Client
 node_modules
-public
+**/public/*
+!**/public/carrefour.png
+!**/public/manifest.json
