@@ -39,6 +39,7 @@ module.exports = merge(common, {
     // Extract SCSS/CSS from bundle into a file; Including minification
     new ExtractTextPlugin("style.css"),
 
+    // Offline Support
     new WorkboxPlugin({
       globDirectory: PUBLIC_DIR,
       // globPatterns: ["**/*.{html,js}"], // Set specific file pattern to cache
