@@ -25,3 +25,5 @@ strong {
   @extend .g-flex-column;
   min-height: 100%;
 }
+
+@include placeholder;

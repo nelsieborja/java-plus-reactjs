@@ -1,3 +1,4 @@
 module.exports = {
-  English: "English"
+  About: "About",
+  "Not Found": "Not Found"
 };

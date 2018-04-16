@@ -3,7 +3,7 @@ import MaterialButton from "../material-button";
 
 export default props => (
   <section className="g-flex-item-stretch">
-    <p className="counter">❤️ Rates: {props.count}%</p>
+    <p className="counter">Rate❤️ {props.count}%</p>
 
     <MaterialButton
       text="Increment"

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+// https://github.com/amsul/react-translated
 import { Provider } from "react-translated";
 
 import { updatei18n } from "../actions/i18n";
@@ -46,7 +47,11 @@ class App extends React.PureComponent {
       <Provider language={this.props.language} translation={this.props.i18n}>
         <Header />
         <Routes />
-        <select onChange={this.props.onChangeLanguage}>
+        <select
+          onChange={this.props.onChangeLanguage}
+          style={{ marginTop: 20, padding: 10, WebkitAppearance: "none" }}
+          value={this.props.language}
+        >
           <option value="en">English</option>
           <option value="ar">Arabic</option>
         </select>

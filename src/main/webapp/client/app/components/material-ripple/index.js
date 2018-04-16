@@ -152,6 +152,7 @@ class MaterialRipple extends React.PureComponent {
 
 MaterialRipple.defaultProps = {
   centerRipple: true,
+  className: "",
   delayRipple: false,
   smallRipple: false,
   type: "button"

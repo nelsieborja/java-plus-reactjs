@@ -1,4 +1,17 @@
 .header {
   border-bottom: 2px dashed $border-color;
   padding-bottom: 20px;
+
+  &__search {
+    display: none;
+
+    @include tabletAndUp {
+      display: block;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #1159a7;
+      width: 40%;
+      max-width: 400px;
+    }
+  }
 }

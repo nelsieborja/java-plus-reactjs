@@ -4,26 +4,22 @@
   "description": "Java + ReactJS",
   "main": "app.js",
   "scripts": {
-    "start":
-      "webpack-dev-server --define process.env.NODE_ENV=\"'development'\" --config webpack.dev.js",
-    "build":
-      "webpack --define process.env.NODE_ENV=\"'production'\" --config webpack.prod.js",
+    "start": "webpack-dev-server --https --define process.env.NODE_ENV=\"'development'\" --config webpack.dev.js",
+    "build": "webpack --define process.env.NODE_ENV=\"'production'\" --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nelsie Borja",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-loadable": "^5.3.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
     "react-translated": "^2.0.2",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "style-loader": "^0.19.0",
-    "webpack": "^3.8.1"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -40,8 +36,11 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.8",
+    "prepack-webpack-plugin": "^1.1.0",
     "sass-loader": "^6.0.6",
     "sass-resources-loader": "^1.3.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.3",
     "webpack-merge": "^4.1.1",
     "why-did-you-update": "^0.1.0",

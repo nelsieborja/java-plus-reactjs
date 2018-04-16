@@ -18,7 +18,7 @@ module.exports = merge(common, {
     hot: true,
 
     // Client port to be used by webpack-dev-server
-    port: 3000,
+    port: 3001,
 
     // Since we used backend server as both API and Web Server
     // and template file serves from backend server
@@ -122,3 +122,6 @@ module.exports = merge(common, {
 //   // The entry point of our app
 //   app: APP_DIR + "index"
 // },
+
+// Testing SW in local
+// http://deanhume.com/home/blogpost/testing-service-workers-locally-with-self-signed-certificates/10155

@@ -5,6 +5,7 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
+// const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
 
 // Directories
 const APP_DIR = path.resolve(__dirname, "./app");
@@ -36,8 +37,11 @@ module.exports = merge(common, {
 
     new webpack.optimize.AggressiveMergingPlugin(),
 
+    // new PrepackWebpackPlugin(),
+
     // Extract SCSS/CSS from bundle into a file; Including minification
-    new ExtractTextPlugin("style.css"),
+    // allChunks: true => extract css from chunks
+    new ExtractTextPlugin({ filename: "style.css", allChunks: true }),
 
     // Offline Support
     new WorkboxPlugin({
@@ -64,7 +68,8 @@ module.exports = merge(common, {
         test: /\.scss$/,
         include: APP_DIR,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
+          // CSS from chunks will be extracted as well, thus no need for fallback; this will reduce size of the main script file
+          // fallback: "style-loader",
           use: [
             {
               loader: "css-loader",

@@ -1,3 +1,4 @@
 module.exports = {
-  English: "Arabic"
+  About: "حول",
+  "Not Found": "غير معثور عليه"
 };

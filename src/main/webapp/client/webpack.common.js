@@ -31,9 +31,13 @@ module.exports = {
     new CleanWebpackPlugin(["public"], {
       // Need to explicitly specify root if output folder is outside root
       root: path.resolve(__dirname, ".."),
-      exclude: ["manifest.json", "carrefour.png"],
-      verbose: true,
-      dry: false
+      exclude: [
+        "manifest.json",
+        "carrefour.png"
+        // "sw.js",
+        // "workbox-sw.prod.v2.1.2.js"
+      ],
+      verbose: true
     })
   ],
 

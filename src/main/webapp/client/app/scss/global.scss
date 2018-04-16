@@ -11,6 +11,10 @@
       flex-direction: column;
     }
 
+    &-content-center {
+      justify-content: center;
+    }
+
     &-item-stretch {
       flex: 1;
     }

@@ -10,6 +10,7 @@ export const history = createHistory();
 /*global __INITIAL_STATE__*/
 const initialState = __INITIAL_STATE__ || {};
 const enhancers = [];
+// routerMiddleware(history) => A middleware you can apply to your Redux store to capture dispatched actions created by the action creators. It will redirect those actions to the provided history instance.
 const middleware = [thunk, routerMiddleware(history)];
 
 if (process.env.NODE_ENV === "development") {
